@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,46 +18,31 @@ public class SecondActivity extends AppCompatActivity {
     EditText et1;
     EditText et2;
     EditText et3;
+    EditText et4;
+    EditText et5;
+    EditText et6;
+    TextView text1;
+    RadioButton rb1;
+    RadioButton rb2;
     Button btn1;
     Button btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.register);
 
         et1=(EditText)findViewById(R.id.et1);
         et2=(EditText)findViewById(R.id.et2);
         et3=(EditText)findViewById(R.id.et3);
+        et4=(EditText)findViewById(R.id.et4);
+        et5=(EditText)findViewById(R.id.et5);
+        et6=(EditText)findViewById(R.id.et6);
+        text1=(TextView)findViewById(R.id.text1);
+        rb1=(RadioButton)findViewById(R.id.rb1);
+        rb2=(RadioButton)findViewById(R.id.rb2);
         btn1=(Button)findViewById(R.id.btn1);
         btn2=(Button)findViewById(R.id.btn2);
-
-        et3.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String password = et2.getText().toString();
-                String check=et3.getText().toString();
-                if(password.equals(check)){
-                    et2.setBackgroundColor(Color.GREEN);
-                    et3.setBackgroundColor(Color.GREEN);
-                }
-                else{
-                    et2.setBackgroundColor(Color.RED);
-                    et3.setBackgroundColor(Color.RED);
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +76,39 @@ public class SecondActivity extends AppCompatActivity {
                     et2.requestFocus();
                     return;
                 }
+                // 이메일 입력 확인
+                if( et4.getText().toString().length() == 0 ) {
+                    Toast.makeText(SecondActivity.this, "이름을 입력하세요!", Toast.LENGTH_SHORT).show();
+                    et4.requestFocus();
+                    return;
+                }
+                // 이메일 입력 확인
+                if( et5.getText().toString().length() == 0 ) {
+                    Toast.makeText(SecondActivity.this, "번호를 입력하세요!", Toast.LENGTH_SHORT).show();
+                    et5.requestFocus();
+                    return;
+                }
+                // 이메일 입력 확인
+                if( et6.getText().toString().length() == 0 ) {
+                    Toast.makeText(SecondActivity.this, "주소를 입력하세요!", Toast.LENGTH_SHORT).show();
+                    et6.requestFocus();
+                    return;
+                }
+                // 이메일 입력 확인
+                if( rb1.getText().toString().length() == 0 ) {
+                    Toast.makeText(SecondActivity.this, "동의란을 확인해주세요", Toast.LENGTH_SHORT).show();
+                    rb1.requestFocus();
+                    return;
+                }
+                // 이메일 입력 확인
+                if( rb2.getText().toString().length() == 0 ) {
+                    Toast.makeText(SecondActivity.this, "동의란을 확인해주세요", Toast.LENGTH_SHORT).show();
+                    rb2.requestFocus();
+                    return;
+                }
+
+
+
 
                 Intent result = new Intent();
                 result.putExtra("email", et1.getText().toString());
