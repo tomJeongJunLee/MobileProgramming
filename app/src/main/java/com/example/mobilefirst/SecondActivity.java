@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,45 +77,44 @@ public class SecondActivity extends AppCompatActivity {
                     et2.requestFocus();
                     return;
                 }
-                // 이메일 입력 확인
+                // 이름 입력 확인
                 if( et4.getText().toString().length() == 0 ) {
                     Toast.makeText(SecondActivity.this, "이름을 입력하세요!", Toast.LENGTH_SHORT).show();
                     et4.requestFocus();
                     return;
                 }
-                // 이메일 입력 확인
+                // 번호 입력 확인
                 if( et5.getText().toString().length() == 0 ) {
                     Toast.makeText(SecondActivity.this, "번호를 입력하세요!", Toast.LENGTH_SHORT).show();
                     et5.requestFocus();
                     return;
                 }
-                // 이메일 입력 확인
+                // 주소 입력 확인
                 if( et6.getText().toString().length() == 0 ) {
                     Toast.makeText(SecondActivity.this, "주소를 입력하세요!", Toast.LENGTH_SHORT).show();
                     et6.requestFocus();
                     return;
                 }
-                // 이메일 입력 확인
-                if( rb1.getText().toString().length() == 0 ) {
+                // 동의란 입력 확인
+                if( rb1.isChecked()==false ) {
                     Toast.makeText(SecondActivity.this, "동의란을 확인해주세요", Toast.LENGTH_SHORT).show();
                     rb1.requestFocus();
                     return;
                 }
-                // 이메일 입력 확인
-                if( rb2.getText().toString().length() == 0 ) {
-                    Toast.makeText(SecondActivity.this, "동의란을 확인해주세요", Toast.LENGTH_SHORT).show();
+                if( rb2.isChecked()==true) {
+                    Toast.makeText(SecondActivity.this, "거절하시면 회원가입이 안됩니다.", Toast.LENGTH_SHORT).show();
                     rb2.requestFocus();
                     return;
                 }
 
-
-
-
                 Intent result = new Intent();
                 result.putExtra("email", et1.getText().toString());
+                result.putExtra("password",et2.getText().toString());
+
 
                 // 자신을 호출한 Activity로 데이터를 보낸다.
                 setResult(RESULT_OK, result);
+
                 finish();
             }
 
